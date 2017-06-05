@@ -1,0 +1,13 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "Source directory",
+  "homepage": "https://gitlab.com/Philiiiiiipp/dathuis.git#README",
+  "license": "UNLICENSED",
+  "author": "Philipp Beau <PhilippB3au@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com:Philiiiiiipp/dathuis.git"
+  },
+  "private": true
+}

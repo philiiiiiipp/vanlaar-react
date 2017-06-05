@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log
+lib
+testLib
+buildLib
+.DS_Store
+dist
