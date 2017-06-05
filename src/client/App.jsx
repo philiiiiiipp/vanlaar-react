@@ -8,10 +8,16 @@ export default class Main extends Component {
     this.state = {};
   }
 
-
+  componentWillMount = () => {
+    fetch('/api/robots')
+    .then((data) => data.json())
+    .then((json) => {
+      
+    });
+  }
 
   render() {
-    
+
     return (
       <div>Main Container</div>
     );
