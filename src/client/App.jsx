@@ -6,8 +6,6 @@ export default class Main extends Component {
     super(props);
   }
 
-
-
   render() {
     return (
       <div>
