@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Robot from './Robot.jsx';
 
-export default class Main extends Component {
+class Main extends Component {
 
   constructor(props) {
     super(props);
@@ -45,3 +46,7 @@ export default class Main extends Component {
     );
   }
 }
+
+export default connect(state => ({
+}), (dispatch: Function) => ({
+}))(Main);
