@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { robotsArrived } from './reducer';
+
 import Robot from './Robot.jsx';
 
 class Main extends Component {
 
   constructor(props) {
     super(props);
-
-    console.log(props.robots);
 
     this.state = {
       robots: [],
@@ -18,12 +18,11 @@ class Main extends Component {
   }
 
   componentWillMount = () => {
-    console.log(this.props.robots);
-
     fetch('/api/robots')
     .then((data) => data.json())
     .then((json) => {
-      this.setState({ filteredRobots: json, robots: json, loading: false });
+      this.props.robotsArrived(json);
+      this.setState({ loading: false });
     });
   }
 
@@ -34,7 +33,8 @@ class Main extends Component {
 
   render() {
     const { filteredRobots, loading } = this.state;
-    const robotElement = filteredRobots.map((robot, index) => {
+    const { robots } = this.props;
+    const robotElement = robots.map((robot, index) => {
       return <Robot key={index} robot={robot} />
     });
 
@@ -53,7 +53,7 @@ class Main extends Component {
 
 export default connect(state => {
   const { robots } = state;
-  console.log(state);
   return { robots };
 }, (dispatch: Function) => ({
+  robotsArrived: (robots) => dispatch(robotsArrived(robots))
 }))(Main);
