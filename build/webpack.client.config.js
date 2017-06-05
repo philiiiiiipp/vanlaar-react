@@ -79,9 +79,10 @@ export const clientDevConfig = {
     maxEntrypointSize: 400000000, // int (in bytes)
   },
   entry: [
+    'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './client/entry.js'
+    './client/entryHMR.js'
   ],
   plugins: [
     new webpack.DefinePlugin(

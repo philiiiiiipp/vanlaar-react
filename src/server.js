@@ -8,7 +8,6 @@ import bodyParser from 'body-parser';
 /* Get our "DB" */
 const ROBOTS = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../robots.json')).toString()).splice(0,100);
 
-
 const app = express();
 
 app.use('/', express.static(path.resolve(__dirname, '..', 'static')));
