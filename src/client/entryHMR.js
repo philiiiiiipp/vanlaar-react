@@ -4,7 +4,7 @@ import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App.jsx';
+import App from './scenes/Main.jsx';
 
 const rootEl = document.getElementById('app');
 const render = Component => {
@@ -19,8 +19,8 @@ const render = Component => {
 render(App);
 
 if (module.hot) {
-  module.hot.accept('./App.jsx', () => {
-    const NextApp = require('./App.jsx').default;
+  module.hot.accept('./scenes/Main.jsx', () => {
+    const NextApp = require('./scenes/Main.jsx').default;
     render(NextApp);
   });
 }
