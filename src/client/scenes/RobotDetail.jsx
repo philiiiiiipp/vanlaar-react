@@ -10,18 +10,22 @@ export default class RobotDetail extends Component {
 
   componentWillMount = () => {
     const { routeParams } = this.props;
-    console.log(routeParams);
 
-    // fetch('/api/getRobot')
-    // .then((data) => data.json())
-    // .then((json) => this.state({ robot: json }));
+    fetch('/api/getRobot?id=' +routeParams.id)
+    .then((data) => data.json())
+    .then((json) => this.setState({ robot: json }));
   }
 
   render() {
+    if (this.state.robot == null) return <p>'Loading'</p>
+    const { robot: { name, origin, picture, catchphrase } } = this.state;
 
     return (
       <div>
-        Loaded
+        <img src={picture} />
+        <h1>{name}</h1>
+        <p>{origin}</p>
+        <p>{catchphrase}</p>
       </div>
     );
   }

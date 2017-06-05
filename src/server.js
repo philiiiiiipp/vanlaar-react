@@ -21,8 +21,9 @@ app.use(`/api/robots`, (req, res) => {
 });
 
 app.use(`/api/getRobot`, (req, res) => {
-  ROBOTS.find()
-  res.json(ROBOTS);
+  const id = req.query.id;
+  const robot = ROBOTS.find((robot) => robot.id.$oid === id);
+  return res.json(robot);
 });
 
 app.use('*', (req, res) => res.send(HTML));
