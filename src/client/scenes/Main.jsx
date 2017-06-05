@@ -7,6 +7,8 @@ class Main extends Component {
   constructor(props) {
     super(props);
 
+    console.log(props.robots);
+
     this.state = {
       robots: [],
       filteredRobots: [],
@@ -16,6 +18,8 @@ class Main extends Component {
   }
 
   componentWillMount = () => {
+    console.log(this.props.robots);
+
     fetch('/api/robots')
     .then((data) => data.json())
     .then((json) => {
@@ -47,6 +51,9 @@ class Main extends Component {
   }
 }
 
-export default connect(state => ({
-}), (dispatch: Function) => ({
+export default connect(state => {
+  const { robots } = state;
+  console.log(state);
+  return { robots };
+}, (dispatch: Function) => ({
 }))(Main);

@@ -11,7 +11,7 @@ import { createLogger } from 'redux-logger';
 import rootReducer from './scenes/reducer';
 
 const store = createStore(
-  rootReducer, {},
+  rootReducer,
   applyMiddleware(thunkMiddleware, createLogger())
 );
 
