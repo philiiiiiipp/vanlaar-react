@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Robot from './Robot.jsx';
 
 export default class Main extends Component {
 
@@ -6,7 +7,10 @@ export default class Main extends Component {
     super(props);
 
     this.state = {
-      robots: []
+      robots: [],
+      filteredRobots: [],
+      search: '',
+      loading: true
     };
   }
 
@@ -14,15 +18,30 @@ export default class Main extends Component {
     fetch('/api/robots')
     .then((data) => data.json())
     .then((json) => {
-      this.setState({ robots: json });
+      this.setState({ filteredRobots: json, robots: json, loading: false });
     });
   }
 
+  onSearch = ({ target: { value } }) => {
+    const filteredRobots = this.state.robots.filter((robot) => robot.name.toLowerCase().startsWith(value.toLowerCase()));
+    this.setState({ filteredRobots, search: value});
+  }
+
   render() {
-    const { robots } = this.state;
+    const { filteredRobots, loading } = this.state;
+    const robotElement = filteredRobots.map((robot, index) => {
+      return <Robot key={index} robot={robot} />
+    });
 
     return (
-      <div>Main Container</div>
+      <div>
+        <h1>Robots</h1>
+        <div>
+          <input value={this.state.search} onChange={this.onSearch} /> {filteredRobots.length}
+        </div>
+        { loading ? 'Loading' : null}
+        {robotElement}
+      </div>
     );
   }
 }
