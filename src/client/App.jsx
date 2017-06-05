@@ -1,8 +1,19 @@
-/* @flow */
+import React, { Component } from 'react';
 
-import React from 'react';
-import { Router, browserHistory } from 'react-router';
+export default class Main extends Component {
 
-import routes from './routes.jsx';
+  constructor(props) {
+    super(props);
 
-export default () => <Router history={browserHistory} routes={routes} />;
+    this.state = {};
+  }
+
+
+
+  render() {
+    
+    return (
+      <div>Main Container</div>
+    );
+  }
+}

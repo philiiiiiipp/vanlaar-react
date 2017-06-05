@@ -10,7 +10,7 @@
     "build:prod": "npm run compile && node buildLib/build --production",
     "run:prod": "node dist/server.js",
     "prod": "npm run build:prod && npm run run:prod",
-    "dev": "npm run compile && node --max-old-space-size=4096 buildLib/build --development",
+    "dev": "npm run compile && node --max-old-space-size=4096 buildLib/build --development"
   },
   "author": "Philipp Beau <PhilippB3au@gmail.com>",
   "license": "ISC",
