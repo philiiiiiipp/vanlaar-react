@@ -13,7 +13,7 @@ import Main from './routes.js';
 import rootReducer from './scenes/reducer';
 
 const store = createStore(
-  rootReducer, {},
+  rootReducer,
   applyMiddleware(thunkMiddleware, createLogger())
 );
 
