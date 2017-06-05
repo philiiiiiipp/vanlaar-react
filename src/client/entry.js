@@ -3,9 +3,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import App from './scenes/Main.jsx';
+import Main from './routes.js';
+
 
 render(
-  <App />,
+  <Main />,
   document.getElementById('app')
 );
