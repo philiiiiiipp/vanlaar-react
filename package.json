@@ -11,7 +11,6 @@
     "run:prod": "node dist/server.js",
     "prod": "npm run build:prod && npm run run:prod",
     "dev": "npm run compile && node --max-old-space-size=4096 buildLib/build --development",
-    "postinstall": "node -e \"var s='../src',d='node_modules/src',fs=require('fs');fs.exists(d,function(e){e||fs.symlinkSync(s,d,'dir')});\""
   },
   "author": "Philipp Beau <PhilippB3au@gmail.com>",
   "license": "ISC",

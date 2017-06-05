@@ -5,19 +5,17 @@ import fs from 'fs';
 import path from 'path';
 import bodyParser from 'body-parser';
 
+/* Get our "DB" */
 const ROBOTS = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../robots.json')).toString());
-const app = express();
-app.use('/', express.static(path.resolve(__dirname, '..', 'static')));
 
+const app = express();
+
+app.use('/', express.static(path.resolve(__dirname, '..', 'static')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(`/api/robots`, (req, res) => {
-
-});
-
-app.use('*', (req, res) => {
-  return res.send('hallo');
+  res.json(ROBOTS);
 });
 
 app.listen(3000, () => {
