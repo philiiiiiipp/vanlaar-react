@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 
 /* Get our "DB" */
 const ROBOTS = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../robots.json')).toString()).splice(0,100);
+const HTML = fs.readFileSync(path.resolve(__dirname, '../index.html')).toString();
 
 const app = express();
 
@@ -19,6 +20,8 @@ app.use(`/api/robots`, (req, res) => {
     res.json(ROBOTS);
   }, 1000);
 });
+
+app.use('*', (req, res) => res.send(HTML));
 
 app.listen(3000, () => {
   console.info('HTTP is running on PORT 3000/');
