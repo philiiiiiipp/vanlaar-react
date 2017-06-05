@@ -4,8 +4,8 @@ import styles from './Robot.scss';
 export default class Robot extends Component {
 
   render() {
-    const { robot: { name, picture, origin } } = this.props;
-
+    const { robot: { name, picture, origin, id: { $oid } } } = this.props;
+    
     return (
       <div className={styles.robotContainer}>
         <div>
@@ -13,6 +13,7 @@ export default class Robot extends Component {
         </div>
         <h2>{name}</h2>
         <p>{origin}</p>
+        <p>{$oid}</p>
       </div>
     );
   }

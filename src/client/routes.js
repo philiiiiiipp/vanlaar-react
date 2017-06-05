@@ -1,17 +1,19 @@
 /* @flow */
 
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-
-import { Router, browserHistory } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 import Main from './scenes/Main.jsx';
+import PageWrapper from './scenes/PageWrapper.jsx';
+import RobotDetail from './scenes/RobotDetail.jsx';
 
 export default () => {
-  return <Router routes={
-    <Route path='/' component={Main}></Route>
-  } history={browserHistory} />;
-};
-
-
-// <IndexRoute component={LandingPage} />
+  return (
+    <Router routes={
+        <Route path='/' component={PageWrapper}>
+          <IndexRoute component={Main} />
+          <Route path='/:id' component={RobotDetail}></Route>
+        </Route>
+    } history={browserHistory} />
+  );
+}
